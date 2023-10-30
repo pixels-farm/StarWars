@@ -7,7 +7,6 @@ import { useAppDispatch } from "../../hooks/store";
 import { showMessage } from "../../store/slices/messageSlice";
 import NotFound from "../../components/NotFound";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import PageLayout from "../PageLayout";
 import { getCharacterIcon } from "../../utils";
 import iPlanet from "../../interface/iPlanet";
@@ -15,6 +14,9 @@ import Loading from "../../components/Loading";
 import iVehicle from "../../interface/iVehicle";
 import PlanetItem from "../PlanetsPage/PlanetItem";
 import FontAwesomeIconCustomized from "../../components/FontAwesomeIconCustomized";
+import VehicleItem from "../VehiclesPage/VehicleItem";
+import { faArrowLeft } from "@fortawesome/pro-duotone-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const row = {
   display: "flex",
@@ -98,7 +100,7 @@ const CharacterPage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -114,7 +116,7 @@ const CharacterPage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -129,7 +131,7 @@ const CharacterPage = () => {
       appBar={
         <Tooltip title="Back">
           <IconButton color="skyblue" onClick={goBack}>
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
           </IconButton>
         </Tooltip>
       }
@@ -158,7 +160,7 @@ const CharacterPage = () => {
             <Typography variant="body1" className="bold">
               Origin:
             </Typography>
-            {character!.homeworld && homePlanet ? (
+            {!!character!.homeworld && homePlanet ? (
               <PlanetItem planet={homePlanet} mode="inline" />
             ) : (
               <Typography variant="body1">Unknown</Typography>
@@ -168,11 +170,17 @@ const CharacterPage = () => {
             <Typography variant="body1" className="bold">
               Vehicles:
             </Typography>
-            <Typography variant="body1">
-              {vehicles.length
-                ? vehicles.map((v) => v.name).join(", ")
-                : "unknown"}
-            </Typography>
+            {!!character!.vehicles.length && !!vehicles.length ? (
+              <Box
+                sx={{ display: "flex", flexDirection: "column", width: "100%" }}
+              >
+                {vehicles.map((vehicle) => (
+                  <VehicleItem mode="inline" vehicle={vehicle} />
+                ))}
+              </Box>
+            ) : (
+              <Typography variant="body1">Unknown</Typography>
+            )}
           </Box>
         </>
       ) : (

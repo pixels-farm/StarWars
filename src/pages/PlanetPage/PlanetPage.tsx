@@ -7,14 +7,17 @@ import { useAppDispatch } from "../../hooks/store";
 import { showMessage } from "../../store/slices/messageSlice";
 import NotFound from "../../components/NotFound";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {} from "@fortawesome/free-solid-svg-icons";
 import PageLayout from "../PageLayout";
 import Loading from "../../components/Loading";
 import iCharacter from "../../interface/iCharacter";
-import { faPlanetRinged } from "@fortawesome/pro-duotone-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  faPlanetRinged,
+  faArrowLeft,
+} from "@fortawesome/pro-duotone-svg-icons";
 import CharacterItem from "../CharactersPage/CharacterItem";
 import FontAwesomeIconCustomized from "../../components/FontAwesomeIconCustomized";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const row = {
   display: "flex",
@@ -85,7 +88,7 @@ const PlanetPage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -101,7 +104,7 @@ const PlanetPage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -116,7 +119,7 @@ const PlanetPage = () => {
       appBar={
         <Tooltip title="Back">
           <IconButton color="secondary" onClick={goBack}>
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
           </IconButton>
         </Tooltip>
       }
