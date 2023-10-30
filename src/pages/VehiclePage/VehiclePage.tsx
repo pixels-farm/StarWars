@@ -7,11 +7,14 @@ import { useAppDispatch } from "../../hooks/store";
 import { showMessage } from "../../store/slices/messageSlice";
 import NotFound from "../../components/NotFound";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faSpaceShuttle } from "@fortawesome/free-solid-svg-icons";
 import PageLayout from "../PageLayout";
 import Loading from "../../components/Loading";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import FontAwesomeIconCustomized from "../../components/FontAwesomeIconCustomized";
+import {
+  faSpaceShuttle,
+  faArrowLeft,
+} from "@fortawesome/pro-duotone-svg-icons";
 
 const row = {
   display: "flex",
@@ -59,7 +62,7 @@ const VehiclePage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -75,7 +78,7 @@ const VehiclePage = () => {
         appBar={
           <Tooltip title="Back">
             <IconButton color="secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             </IconButton>
           </Tooltip>
         }
@@ -89,8 +92,8 @@ const VehiclePage = () => {
     <PageLayout
       appBar={
         <Tooltip title="Back">
-          <IconButton color="secondary" onClick={goBack}>
-            <FontAwesomeIcon icon={faArrowLeft} />
+          <IconButton color="skyblue" onClick={goBack}>
+            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
           </IconButton>
         </Tooltip>
       }
