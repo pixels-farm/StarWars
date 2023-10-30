@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "echo No tests available",
+    "test": "cross-env NODE_OPTIONS='--experimental-vm-modules --trace-warnings' react-scripts test --detectOpenHandles",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.4",
     "@types/lodash": "^4.14.200"
   }
 }

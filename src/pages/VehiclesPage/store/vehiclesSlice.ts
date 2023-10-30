@@ -1,6 +1,7 @@
 import {
   AnyAction,
   createEntityAdapter,
+  createSelector,
   createSlice,
   ThunkAction,
 } from "@reduxjs/toolkit";
@@ -72,11 +73,8 @@ export const selectTotal = ({ vehicles }: { vehicles: VehiclesState }) =>
   vehicles.total;
 export const selectLoading = ({ vehicles }: { vehicles: VehiclesState }) =>
   vehicles.loading;
-export const selectAuxiliaryData = ({
-  vehicles,
-}: {
-  vehicles: VehiclesState;
-}) => ({
+
+const auxData = ({ vehicles }: { vehicles: VehiclesState }) => ({
   finished: vehicles.finished,
   next: vehicles.next,
   previous: vehicles.previous,
@@ -84,6 +82,8 @@ export const selectAuxiliaryData = ({
   loading: vehicles.loading,
   total: vehicles.total,
 });
+
+export const selectAuxiliaryData = createSelector(auxData, (data) => data);
 
 const vehiclesSlice = createSlice({
   name: "vehicles",

@@ -1,6 +1,7 @@
 import {
   AnyAction,
   createEntityAdapter,
+  createSelector,
   createSlice,
   ThunkAction,
 } from "@reduxjs/toolkit";
@@ -75,11 +76,8 @@ export const selectLoading = ({
 }: {
   characters: CharactersState;
 }) => characters.loading;
-export const selectAuxiliaryData = ({
-  characters,
-}: {
-  characters: CharactersState;
-}) => ({
+
+const auxData = ({ characters }: { characters: CharactersState }) => ({
   finished: characters.finished,
   next: characters.next,
   previous: characters.previous,
@@ -87,6 +85,8 @@ export const selectAuxiliaryData = ({
   loading: characters.loading,
   total: characters.total,
 });
+
+export const selectAuxiliaryData = createSelector(auxData, (data) => data);
 
 const charactersSlice = createSlice({
   name: "characters",
